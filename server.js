@@ -41,18 +41,18 @@ app.get("/api/", function(req, res) { // CHANGE THIS LATER
   res.json(data);
 });
 
-app.get("/clear", function(req, res) { // CHANGE THIS LATER
+app.get("/api/clear", function(req, res) { // CHANGE THIS LATER
   data.reservations.length = 0;
   data.waitlist.length = 0;
   res.json(data);
 });
 
-app.get("/visitors", function(req, res) { // CHANGE THIS LATER
+app.get("/api/visitors", function(req, res) { // CHANGE THIS LATER
   res.json(visitorCount);
 });
 
 // Get new table data entry from POST
-app.post("/new", function(req, res) { // CHANGE THIS LATER
+app.post("/api/new", function(req, res) { // CHANGE THIS LATER
   var tableData = req.body;
   tableData.routeName = tableData.name.replace(/\s+/g, "").toLowerCase();
   console.log(tableData);
