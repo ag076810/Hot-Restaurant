@@ -19,6 +19,7 @@
   "homepage": "https://github.com/the-realest-stu/Hot-Restaurant#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "path": "^0.12.7"
   }
 }
