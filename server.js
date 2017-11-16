@@ -11,13 +11,16 @@ app.use(bodyParser.json());
 
 // Storing all the tables
 var data = {
-	reservations: [],
-	waitlist: [],
+	reservations: [{name: 'awdawd', id: '12345'}, {name: 'awd', id: '12346'}],
+	waitlist: [{name: 'awdawdawdawd', id: '12347'}, {name: 'a', id: '12348'}],
 };
+
+var visitorCount = 0;
 
 // Routing
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html")); // CHANGE THIS LATER
+  visitorCount++;
 });
 
 app.get("/add", function(req, res) { // CHANGE THIS LATER
@@ -39,9 +42,13 @@ app.get("/api/", function(req, res) { // CHANGE THIS LATER
 });
 
 app.get("/clear", function(req, res) { // CHANGE THIS LATER
-  data.tables.length = 0;
+  data.reservations.length = 0;
   data.waitlist.length = 0;
   res.json(data);
+});
+
+app.get("/visitors", function(req, res) { // CHANGE THIS LATER
+  res.json(visitorCount);
 });
 
 // Get new table data entry from POST
@@ -56,6 +63,34 @@ app.post("/new", function(req, res) { // CHANGE THIS LATER
   data.waitlist.push(tableData);
 
   res.json(tableData);
+});
+
+app.get("/api/remove/:id?", function(req, res) { // CHANGE THIS LATER
+  var tableId = req.params.id;
+
+  if (tableId) {
+    console.log(tableId);
+	for (var i = 0; i < data.reservations.length; i++) {
+	  if (tableId === data.reservations[i].id) {
+	  	data.reservations.splice(i, 1);
+	  	if (data.waitlist.length > 0) {
+	  		var tempTable = data.waitlist.splice(0, 1)[0];
+	  		data.reservations.push(tempTable);
+	  	}
+
+	    return res.json(true);
+	  }
+	}
+	for (var i = 0; i < data.waitlist.length; i++) {
+	  if (tableId === data.waitlist[i].id) {
+	  	data.waitlist.splice(i, 1);
+
+	    return res.json(true);
+	  }
+	}
+	return res.json(false);
+  }
+  return res.json(false);
 });
 
 // Start the Server
