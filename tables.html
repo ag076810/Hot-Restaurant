@@ -79,10 +79,10 @@
 
               tableSection.append(tableDiv);
             }
-            for (var i = 0; i < response.reservations.length; i++) {
+            for (var i = 0; i < response.waitlist.length; i++) {
               var tableDiv = $('<div>').addClass('well');
 
-              var id = response.reservations[i].id;
+              var id = response.waitlist[i].id;
               tableDiv.append($('<h2>').html("<span class='label label-primary'>1</span>|"));
               tableDiv.append($('<div>').append($('<h4>').text(id)));
 
