@@ -36,22 +36,20 @@
             <h4 class="panel-title">Current Reservations</h4>
           </div>
           <section class="panel-body" id="tableSection">
-            <div class="well" id="table1"><h2><span class="label label-primary">1</span>|<div class="1input"></div></div>
-          <div class="well" id="table2"><h2><span class="label label-primary">2</span>|<div class="2input"></div></div>
-          <div class="well" id="table3"><h2><span class="label label-primary">3</span>|<div class="3input"></div></div>
-        <div class="well" id="table4"><h2><span class="label label-primary">4</span>|<div class="4input"></div></div>
-        <div class="well" id="table5"><h2><span class="label label-primary">5</span>|<div class="5input"></div></div
-			</section>
+            
+			    </section>
 				<!-- Waiting List Panel -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">Waiting List</h4>
 					</div>
-					<div class="panel-body" id="waitlistSection">
-					</div>
+					<section class="panel-body" id="waitlistSection">
+            
+          </section>
 				</div>
 			</div>
 		</div>
+    </div>
 
 
 	    <footer class="footer">
@@ -63,9 +61,35 @@
 
 	</div>
 
+  <script type='text/javascript'>
+    $.ajax({
+          url: '/api',
+          method: 'GET'
+        }).done(function(response) {
+          console.log(response.reservations);
+          if (response) {
+            var tableSection = $('#tableSection');
+            var waitlistSection = $('#waitlistSection');
+            for (var i = 0; i < response.reservations.length; i++) {
+              var tableDiv = $('<div>').addClass('well');
 
-<!--  test test test for 
+              var id = response.reservations[i].id;
+              tableDiv.append($('<h2>').html("<span class='label label-primary'>1</span>|"));
+              tableDiv.append($('<div>').append($('<h4>').text(id)));
 
+              tableSection.append(tableDiv);
+            }
+            for (var i = 0; i < response.reservations.length; i++) {
+              var tableDiv = $('<div>').addClass('well');
 
+              var id = response.reservations[i].id;
+              tableDiv.append($('<h2>').html("<span class='label label-primary'>1</span>|"));
+              tableDiv.append($('<div>').append($('<h4>').text(id)));
+
+              waitlistSection.append(tableDiv);
+            }
+          }
+        });
+  </script>
 
 </body></html>

@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 
 // Storing all the tables
 var data = {
-	reservations: [{name: 'awdawd', id: '12345'}, {name: 'awd', id: '12346'}],
-	waitlist: [{name: 'awdawdawdawd', id: '12347'}, {name: 'a', id: '12348'}],
+	reservations: [],
+	waitlist: [],
 };
 
 var visitorCount = 0;
