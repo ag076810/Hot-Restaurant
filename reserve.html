@@ -92,10 +92,10 @@
 
   		// Here we grab the form elements
   		var newReservation = {
-  			customerName: $('#reserve_name').val().trim(),
-  			phoneNumber: $('#reserve_phone').val().trim(),
-  			customerEmail: $('#reserve_email').val().trim(),
-  			customerID: $('#reserve_uniqueID').val().trim(),
+  			name: $('#reserve_name').val().trim(),
+  			phone: $('#reserve_phone').val().trim(),
+  			email: $('#reserve_email').val().trim(),
+  			id: $('#reserve_uniqueID').val().trim(),
         	party: $('#reserve_party').val().trim()
   		};
 
@@ -104,15 +104,15 @@
   		var currentURL = window.location.origin;
 
   	    $.post(currentURL + "/api/new", newReservation,
-  	    function(data){
+  	    function(data) {
 
   	    	// If a table is available... tell user they are booked.
-  	    	if(data == true){
+  	    	if(data === true){
   	    		alert("Yay! You are officially booked!")
   	    	}
 
   	    	// If a table is available... tell user they on the waiting list.
-  	    	if(data == false){
+  	    	if(data === false){
   	    		alert("Sorry you are on the wait list")
   	    	}
 
@@ -121,7 +121,7 @@
   			$('#reserve_phone').val("");
   			$('#reserve_email').val("");
   			$('#reserve_uniqueID').val("");
-        $('#reserve_party').val().trim()
+        	$('#reserve_party').val().trim()
 
   	    });
 

@@ -58,7 +58,10 @@ app.get("/api/visitors", function(req, res) {
 // Get new table data entry from POST
 app.post("/api/new", function(req, res) {
   var tableData = req.body;
-  tableData.routeName = tableData.name.replace(/\s+/g, "").toLowerCase();
+  console.log(tableData);
+  if (tableData && tableData.name) {
+  	tableData.routeName = tableData.name.replace(/\s+/g, "").toLowerCase();
+  }
   console.log(tableData);
 
   if (data.reservations.length < 5) {
