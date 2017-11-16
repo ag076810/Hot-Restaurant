@@ -66,13 +66,15 @@ app.post("/api/new", function(req, res) {
 
   if (data.reservations.length < 5) {
   	data.reservations.push(tableData);
+  } else {
+  	data.waitlist.push(tableData);
   }
-  data.waitlist.push(tableData);
+  
 
   res.json(tableData);
 });
 
-app.get("/api/remove/:id?", function(req, res) { // CHANGE THIS LATER
+app.get("/api/remove/:id?", function(req, res) {
   var tableId = req.params.id;
 
   if (tableId) {
