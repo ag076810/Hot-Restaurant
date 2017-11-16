@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 
 // Storing all the tables
 var data = {
-	reservations: [];
-	waitlist: [];
+	reservations: [],
+	waitlist: [],
 };
 
 // Routing
@@ -35,6 +35,12 @@ app.get("/api/waitlist", function(req, res) { // CHANGE THIS LATER
 
 // Returns both the tables array and the waitlist array
 app.get("/api/", function(req, res) { // CHANGE THIS LATER
+  res.json(data);
+});
+
+app.get("/clear", function(req, res) { // CHANGE THIS LATER
+  data.tables.length = 0;
+  data.waitlist.length = 0;
   res.json(data);
 });
 
