@@ -37,28 +37,28 @@
 						<form role="form" lpformnum="1">
 
 							<div class="form-group">
-								<label for="">Name</label>
-								<input type="text" class="form-control" id="reserve_name");>
+								<label for="reserve_name">Name</label>
+								<input type="text" class="form-control" id="reserve_name" name="name");>
 							</div>
 
 							<div class="form-group">
-								<label for="">Phone Number</label>
-								<input type="text" class="form-control" id="reserve_phone">
+								<label for="reserve_phone">Phone Number</label>
+								<input type="text" class="form-control" id="reserve_phone" name="phone">
 							</div>
 
 							<div class="form-group">
-								<label for="">Email</label>
-								<input type="text" class="form-control" id="reserve_email">
+								<label for="reserve_email">Email</label>
+								<input type="text" class="form-control" id="reserve_email" name="email">
 							</div>
 
               <div class="form-group">
-                <label for="">How Many People in your party?</label>
-                <input type="integer" class="form-control" id="reserve_party">
+                <label for="reserve_party">How Many People in your party?</label>
+                <input type="integer" class="form-control" id="reserve_party" name="party">
               </div>
 
 							<div class="form-group">
-								<label for="">Unique ID</label>
-								<input type="text" class="form-control" id="reserve_uniqueID">
+								<label for="reserve_uniqueID">Unique ID</label>
+								<input type="text" class="form-control" id="reserve_uniqueID" name="id">
 							</div>
 
 
@@ -95,15 +95,15 @@
   			customerName: $('#reserve_name').val().trim(),
   			phoneNumber: $('#reserve_phone').val().trim(),
   			customerEmail: $('#reserve_email').val().trim(),
-  			customerID: $('#reserve_uniqueID').val().trim()
-        party: $('reserve_party').val().trim()
+  			customerID: $('#reserve_uniqueID').val().trim(),
+        	party: $('#reserve_party').val().trim()
   		};
 
   		console.log(newReservation);
 
   		var currentURL = window.location.origin;
 
-  	    $.post(currentURL + "/api/tables", newReservation,
+  	    $.post(currentURL + "/api/new", newReservation,
   	    function(data){
 
   	    	// If a table is available... tell user they are booked.
@@ -121,7 +121,7 @@
   			$('#reserve_phone').val("");
   			$('#reserve_email').val("");
   			$('#reserve_uniqueID').val("");
-        $('reserve_party').val().trim()
+        $('#reserve_party').val().trim()
 
   	    });
 
