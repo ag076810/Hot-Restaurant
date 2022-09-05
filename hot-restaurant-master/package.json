@@ -1,0 +1,25 @@
+{
+  "name": "hot-restaurant",
+  "version": "1.0.0",
+  "description": "restaurant reservation app",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "body-parser": "^1.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbethencourt/hot-restaurant.git"
+  },
+  "author": "rob, daniel, john, kirby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robbethencourt/hot-restaurant/issues"
+  },
+  "homepage": "https://github.com/robbethencourt/hot-restaurant#readme"
+}
